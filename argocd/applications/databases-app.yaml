@@ -9,7 +9,7 @@ spec:
   project: default
   
   source:
-    repoURL: https://github.com/yourusername/infra-repo.git  # ⚠️ CHANGE THIS
+    repoURL: https://github.com/injonge-workforce-payroll-portal/infra-repo.git
     targetRevision: main
     path: databases/postgres
   
