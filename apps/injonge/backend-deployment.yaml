@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: ghcr.io/yourusername/backend-repo:latest  # ⚠️ CHANGE THIS
+        image: ghcr.io/injonge-workforce-payroll-portal/server:latest  # ⚠️ CHANGE THIS
         ports:
         - containerPort: 3000
           name: http
