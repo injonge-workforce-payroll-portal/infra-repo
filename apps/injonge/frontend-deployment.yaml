@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/injonge-workforce-payroll-portal/client:latest  # ⚠️ CHANGE THIS
+        image: ghcr.io/injonge-workforce-payroll-portal/client:latest  
         ports:
         - containerPort: 80
           name: http
