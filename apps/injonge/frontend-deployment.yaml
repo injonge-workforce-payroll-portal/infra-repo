@@ -15,6 +15,8 @@ spec:
       labels:
         app: frontend
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
       - name: frontend
         image: ghcr.io/injonge-workforce-payroll-portal/client:latest  
