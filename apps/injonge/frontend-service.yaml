@@ -3,11 +3,14 @@ kind: Service
 metadata:
   name: frontend
   namespace: injonge
+  annotations:
+    klipper.cattle.io/static-port: "6000"
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
-  - port: 80
+  - port: 6000
     targetPort: 80
+    protocol: TCP
     name: http
   selector:
     app: frontend
