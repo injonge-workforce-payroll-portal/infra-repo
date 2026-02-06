@@ -17,13 +17,30 @@ spec:
     spec:
       imagePullSecrets:
         - name: ghcr-secret
+
       initContainers:
         - name: prisma-migrate
           image: ghcr.io/injonge-workforce-payroll-portal/server:latest
-          command: ["npx", "prisma", "migrate", "deploy"]
           envFrom:
             - secretRef:
                 name: backend-secrets
+          command:
+            - sh
+            - -c
+            - |
+              echo "[INIT] Waiting for database..."
+              until nc -zv postgres.databases.svc.cluster.local 5432; do
+                echo "[INIT] Database not ready, retrying in 2s..."
+                sleep 2
+              done
+              echo "[INIT] Database ready, running Prisma migrations..."
+              if npx prisma migrate deploy; then
+                echo "[INIT] Prisma migrations completed successfully."
+              else
+                echo "[INIT] Prisma migrate FAILED with exit code $?"
+                exit 1
+              fi
+
       containers:
         - name: backend
           image: ghcr.io/injonge-workforce-payroll-portal/server:latest
