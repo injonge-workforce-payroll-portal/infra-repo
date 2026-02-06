@@ -39,7 +39,7 @@ spec:
             command:
             - pg_isready
             - -U
-            - myappuser
+            - injonge
           initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
@@ -47,7 +47,7 @@ spec:
             command:
             - pg_isready
             - -U
-            - myappuser
+            - injonge
           initialDelaySeconds: 5
           periodSeconds: 5
       volumes:
